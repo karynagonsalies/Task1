@@ -19,15 +19,14 @@ class ConferenceRoom {
     
     func description() -> String{
         if state == StateRoom.Busy {
-            return "Nazwa salki: \(name), stan rezerwacji salki: \(state), czas rezerwacji: \(time)"
+            return "Name: \(name), stan: \(state), time: \(time)"
         }  else  {
-            return "Nazwa salki: \(name), stan rezerwacji salki: \(state)"
+            return "Name: \(name), state: \(state)"
         }
     }
 }
 
 var room1 = ConferenceRoom(name : "Yellow", state : StateRoom.Busy, time : 60)
-
 var room2 = ConferenceRoom(name : "Blue", state : StateRoom.Busy, time : 30)
 var room3 = ConferenceRoom(name : "Red", state : StateRoom.Free, time : 0)
 var room4 = ConferenceRoom(name : "Green", state : StateRoom.Free, time : 0)
