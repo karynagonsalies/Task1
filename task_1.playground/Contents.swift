@@ -19,7 +19,7 @@ class ConferenceRoom {
     
     func description() -> String{
         if state == StateRoom.Busy {
-            return "Name: \(name), stan: \(state), time: \(time)"
+            return "Name: \(name), state: \(state), time: \(time)"
         }  else  {
             return "Name: \(name), state: \(state)"
         }
