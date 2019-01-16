@@ -1,46 +1,45 @@
 import UIKit
 
-enum StateRoom: String {
-    case Free
-    case Busy
-}
-
 class ConferenceRoom {
-    
     var name : String
-    var state : StateRoom
-    var time : Int
+    var isFree : Bool
+    var time : Int = 0
     
-    init(name : String, state : StateRoom, time : Int) {
+    init(name : String, isFree : Bool, time : Int) {
         self.name = name
-        self.state = state
+        self.isFree = isFree
         self.time =  time
     }
     
+    init(name : String, isFree : Bool) {
+        self.name = name
+        self.isFree = isFree
+    }
+    
     func description() -> String{
-        if state == StateRoom.Busy {
-            return "Name: \(name), state: \(state), time: \(time)"
-        }  else  {
-            return "Name: \(name), state: \(state)"
+        if isFree {
+            return "Name: \(name), State: \(isFree)"
+        }  else {
+            return "Name: \(name), State: \(isFree), Time: \(time)"
         }
     }
 }
 
-var room1 = ConferenceRoom(name : "Yellow", state : StateRoom.Busy, time : 60)
-var room2 = ConferenceRoom(name : "Blue", state : StateRoom.Busy, time : 30)
-var room3 = ConferenceRoom(name : "Red", state : StateRoom.Free, time : 0)
-var room4 = ConferenceRoom(name : "Green", state : StateRoom.Free, time : 0)
-var room5 = ConferenceRoom(name : "Black", state : StateRoom.Busy, time : 45)
-var room6 = ConferenceRoom(name : "Pink", state : StateRoom.Busy, time : 60)
-var room7 = ConferenceRoom(name : "Brown", state : StateRoom.Free, time : 0)
-var room8 = ConferenceRoom(name : "White", state : StateRoom.Busy, time : 60)
-var room9 = ConferenceRoom(name : "Gold", state : StateRoom.Free, time : 0)
-var room10 = ConferenceRoom(name : "Silver", state : StateRoom.Busy, time : 30)
+var room1 = ConferenceRoom(name : "Yellow", isFree : false, time : 60)
+var room2 = ConferenceRoom(name : "Blue", isFree : false, time : 30)
+var room3 = ConferenceRoom(name : "Red", isFree : true)
+var room4 = ConferenceRoom(name : "Green", isFree : true)
+var room5 = ConferenceRoom(name : "Black", isFree : false, time : 45)
+var room6 = ConferenceRoom(name : "Pink", isFree : false, time : 60)
+var room7 = ConferenceRoom(name : "Brown", isFree : true)
+var room8 = ConferenceRoom(name : "White", isFree : false, time : 60)
+var room9 = ConferenceRoom(name : "Gold", isFree : true)
+var room10 = ConferenceRoom(name : "Silver", isFree : false, time : 30)
 
 var roomArray = [room1, room2, room3,room4, room5, room6, room7, room8, room9, room10]
 
-var busy = roomArray.filter { $0.state == StateRoom.Busy }
-var free = roomArray.filter { $0.state == StateRoom.Free }
+var busy = roomArray.filter { $0.isFree == true }
+var free = roomArray.filter { $0.isFree == false }
 
 for i in busy{
     print(i.description())
@@ -49,4 +48,3 @@ for i in busy{
 for i in free{
     print(i.description())
 }
-
